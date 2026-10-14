@@ -1,0 +1,51 @@
+# Publica o pacote no nuget.org quando uma tag v* é enviada (ex.: git tag v0.1.0 && git push --tags).
+# Usa trusted publishing (OIDC): sem API key guardada. Configure antes, uma vez, em
+# nuget.org > seu usuário > Trusted Publishing: Repository Owner "apipj", Repository "apipj-dotnet",
+# Workflow File "publish.yml" (Environment vazio). E crie o secret NUGET_USER no repositório
+# com o nome de usuário (perfil) do nuget.org, não o e-mail.
+name: Publicar no NuGet
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # emite o token OIDC trocado por uma API key temporária no nuget.org
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Conferir tag x versão do csproj
+        run: |
+          VERSAO="$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' src/Apipj/Apipj.csproj | head -n1)"
+          if [ "v${VERSAO}" != "${GITHUB_REF_NAME}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} não bate com a versão ${VERSAO} do Apipj.csproj" >&2
+            exit 1
+          fi
+
+      - run: dotnet restore
+      - run: dotnet build -c Release --no-restore
+      - run: dotnet test -c Release --no-build
+      - run: dotnet test tests/Apipj.Tests -c Release -p:ApipjTfm=netstandard2.0
+      - run: dotnet pack src/Apipj -c Release -o artifacts
+
+      # API key temporária (vale 1 hora): pedir logo antes do push
+      - name: NuGet login (OIDC → API key temporária)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Publicar
+        working-directory: artifacts
+        run: dotnet nuget push *.nupkg --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

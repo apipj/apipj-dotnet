@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <RootNamespace>Apipj</RootNamespace>
+    <AssemblyName>Apipj</AssemblyName>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <IsAotCompatible>true</IsAotCompatible>
+  </PropertyGroup>
+
+  <!-- Pacote NuGet -->
+  <PropertyGroup>
+    <PackageId>Apipj</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>MASTER BI TECNOLOGIA LTDA</Authors>
+    <Company>MASTER BI TECNOLOGIA LTDA</Company>
+    <Product>apipj</Product>
+    <Copyright>Copyright (c) 2026 MASTER BI TECNOLOGIA LTDA</Copyright>
+    <Title>apipj: API CNPJ gratuita para .NET (C#)</Title>
+    <Description>API CNPJ gratuita para .NET/C#: consultar CNPJ na Receita Federal, validar CNPJ e CNPJ alfanumérico. Brazilian CNPJ company lookup (free API). Cliente oficial do apipj (https://apipj.com.br): razão social, situação cadastral, endereço, CNAEs, Simples/MEI e sócios, com plano gratuito de 50 mil consultas por mês.</Description>
+    <PackageTags>cnpj;api-cnpj;consultar-cnpj;consulta-cnpj;receita-federal;validar-cnpj;cnpj-alfanumerico;brasil;brazil;empresa</PackageTags>
+    <PackageProjectUrl>https://apipj.com.br</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/apipj/apipj-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReleaseNotes>https://github.com/apipj/apipj-dotnet/blob/main/CHANGELOG.md</PackageReleaseNotes>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <!-- IAsyncEnumerable<T> no netstandard2.0 (já vem com o System.Text.Json; explícito para quem usa .NET Core 3.x a 7) -->
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Apipj.Tests" />
+  </ItemGroup>
+
+</Project>

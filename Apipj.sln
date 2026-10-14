@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{06FFC9F7-BD6C-44C6-AB6C-C6C12FF0648C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apipj", "src\Apipj\Apipj.csproj", "{6A1AA47D-490B-4E72-A080-411DE8EB7B07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{19F3BE23-9157-4E80-9710-39ACD3DA3819}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apipj.Tests", "tests\Apipj.Tests\Apipj.Tests.csproj", "{24D62F09-A8D9-48F1-9541-32561E8D5B95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A1AA47D-490B-4E72-A080-411DE8EB7B07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A1AA47D-490B-4E72-A080-411DE8EB7B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A1AA47D-490B-4E72-A080-411DE8EB7B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A1AA47D-490B-4E72-A080-411DE8EB7B07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D62F09-A8D9-48F1-9541-32561E8D5B95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D62F09-A8D9-48F1-9541-32561E8D5B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D62F09-A8D9-48F1-9541-32561E8D5B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D62F09-A8D9-48F1-9541-32561E8D5B95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6A1AA47D-490B-4E72-A080-411DE8EB7B07} = {06FFC9F7-BD6C-44C6-AB6C-C6C12FF0648C}
+		{24D62F09-A8D9-48F1-9541-32561E8D5B95} = {19F3BE23-9157-4E80-9710-39ACD3DA3819}
+	EndGlobalSection
+EndGlobal

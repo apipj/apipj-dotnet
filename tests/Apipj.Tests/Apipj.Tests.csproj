@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <!-- dotnet test -p:ApipjTfm=netstandard2.0 roda os mesmos testes contra o build netstandard2.0 do pacote -->
+    <ApipjTfm Condition="'$(ApipjTfm)' == ''">net8.0</ApipjTfm>
+    <DefineConstants Condition="'$(ApipjTfm)' == 'netstandard2.0'">$(DefineConstants);APIPJ_NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Apipj\Apipj.csproj" SetTargetFramework="TargetFramework=$(ApipjTfm)" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" Condition="'$(ApipjTfm)' == 'netstandard2.0'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+    <Content Include="Dados\**\*.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

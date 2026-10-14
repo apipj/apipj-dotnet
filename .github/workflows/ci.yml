@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet restore
+      - run: dotnet build -c Release --no-restore
+      - name: Testes (build net8.0)
+        run: dotnet test -c Release --no-build
+      - name: Testes (build netstandard2.0)
+        run: dotnet test tests/Apipj.Tests -c Release -p:ApipjTfm=netstandard2.0
+      - name: Pacote
+        run: dotnet pack src/Apipj -c Release -o artifacts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pacote
+          path: artifacts/

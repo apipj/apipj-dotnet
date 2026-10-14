@@ -1,0 +1,111 @@
+{
+  "cnpj": "00000000000191",
+  "cnpj_formatado": "00.000.000/0001-91",
+  "razao_social": "BANCO DO BRASIL SA",
+  "nome_fantasia": "DIRECAO GERAL",
+  "matriz_filial": "MATRIZ",
+  "situacao_cadastral": {
+    "codigo": "02",
+    "descricao": "ATIVA",
+    "data": "2005-11-03",
+    "motivo": {
+      "codigo": "00",
+      "descricao": "SEM MOTIVO"
+    }
+  },
+  "situacao_especial": {
+    "descricao": null,
+    "data": null
+  },
+  "data_inicio_atividade": "1966-08-01",
+  "natureza_juridica": {
+    "codigo": "2038",
+    "descricao": "Sociedade de Economia Mista"
+  },
+  "qualificacao_responsavel": {
+    "codigo": "10",
+    "descricao": "Diretor"
+  },
+  "porte": {
+    "codigo": "05",
+    "descricao": "DEMAIS"
+  },
+  "capital_social": 120000000000,
+  "cnae_principal": {
+    "codigo": "6422100",
+    "descricao": "Bancos múltiplos, com carteira comercial"
+  },
+  "cnaes_secundarios": [
+    {
+      "codigo": "6499999",
+      "descricao": "Outras atividades de serviços financeiros não especificadas anteriormente"
+    }
+  ],
+  "endereco": {
+    "tipo_logradouro": "QUADRA",
+    "logradouro": "SAUN QUADRA 5 BLOCO B TORRE I, II, III",
+    "numero": "SN",
+    "complemento": "ANDAR T I SL S101 A S1602 T II SL C101 A C1602 TIII SL N101 A N1602",
+    "bairro": "ASA NORTE",
+    "cep": "70040912",
+    "municipio": {
+      "codigo_rfb": "9701",
+      "codigo_ibge": "5300108",
+      "nome": "BRASILIA"
+    },
+    "uf": "DF",
+    "pais": null,
+    "cidade_exterior": null
+  },
+  "telefones": [
+    {
+      "ddd": "61",
+      "numero": "34939002"
+    }
+  ],
+  "fax": {
+    "ddd": "61",
+    "numero": "34931040"
+  },
+  "email": "SECEX@BB.COM.BR",
+  "ente_federativo_responsavel": null,
+  "simples": {
+    "optante": false,
+    "data_opcao": "2007-07-01",
+    "data_exclusao": "2007-07-01"
+  },
+  "mei": {
+    "optante": false,
+    "data_opcao": "2009-07-01",
+    "data_exclusao": "2009-07-01"
+  },
+  "socios": [
+    {
+      "nome": "FELIPE GUIMARAES GEISSLER PRINCE",
+      "tipo": "PESSOA FISICA",
+      "cpf_cnpj": "***345856**",
+      "qualificacao": {
+        "codigo": "10",
+        "descricao": "Diretor"
+      },
+      "data_entrada": "2020-07-10",
+      "faixa_etaria": "41 a 50 anos",
+      "pais": null,
+      "representante_legal": null
+    },
+    {
+      "nome": "PAULA SAYAO CARVALHO ARAUJO",
+      "tipo": "PESSOA FISICA",
+      "cpf_cnpj": "***989951**",
+      "qualificacao": {
+        "codigo": "10",
+        "descricao": "Diretor"
+      },
+      "data_entrada": "2020-09-24",
+      "faixa_etaria": "51 a 60 anos",
+      "pais": null,
+      "representante_legal": null
+    }
+  ],
+  "atualizado_em": "2026-09"
+}
